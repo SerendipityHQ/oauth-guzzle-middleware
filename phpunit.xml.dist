@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./vendor/autoload.php"
+         colors="true">
+    <php>
+        <!-- Specify your twitter OAuth credentials -->
+        <server name="OAUTH_CONSUMER_KEY" value="" />
+        <server name="OAUTH_CONSUMER_SECRET" value="" />
+        <server name="OAUTH_TOKEN" value="" />
+        <server name="OAUTH_TOKEN_SECRET" value="" />
+    </php>
+    <testsuites>
+        <testsuite>
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+    <!--
+    <logging>
+        <log type="coverage-html" target="build/coverage" title="SerendipityHQ Remotes" charset="UTF-8" yui="true" highlight="true"
+             lowUpperBound="35" highLowerBound="70" />
+    </logging>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <directory>src/Clerk/Tests</directory>
+                <directory>src/Remotes/Migrator/_old</directory>
+                <directory>src/Remotes/Tests</directory>
+                <directory>src/Tracker/Tests</directory>
+                <directory>src/Tracker/WOOCOMMERCE_2/_old</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    -->
+</phpunit>
