@@ -1,6 +1,6 @@
 {
-    "name": "serendipity_hq/guzzle-oauth1-middleware",
-    "description": "OAuth 1.0a middleware for Guzzle (6+)",
+    "name": "serendipity_hq/oauth-guzzle-middleware",
+    "description": "OAuth middleware for Guzzle (6+)",
     "homepage": "http://guzzlephp.org/",
     "keywords": ["oauth", "guzzle"],
     "license": "MIT",
@@ -18,13 +18,15 @@
     ],
     "require": {
         "php": ">=5.5.0",
+        "aerendir/php-oauth-common": "*",
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
+        "fabpot/php-cs-fixer": "*",
         "phpunit/phpunit": "~4.0",
         "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
-        "psr-4": { "GuzzleHttp\\Middleware\\": "src" }
+        "psr-4": { "GuzzleHttp\\Middleware\\OpenAuthentication\\": "src" }
     }
 }

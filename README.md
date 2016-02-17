@@ -1,10 +1,16 @@
-[![Latest Stable Version](https://poser.pugx.org/serendipity_hq/guzzle-oauth1-middleware/v/stable)](https://packagist.org/packages/serendipity_hq/guzzle-oauth1-middleware)
+[![Latest Stable Version](https://poser.pugx.org/serendipity_hq/oauth-guzzle-middleware/v/stable)](https://packagist.org/packages/serendipity_hq/oauth-guzzle-middleware)
+[![Build Status](https://travis-ci.org/SerendipityHQ/oauth-guzzle-middleware.svg?branch=master)](https://travis-ci.org/SerendipityHQ/oauth-guzzle-middleware)
+[![Total Downloads](https://poser.pugx.org/serendipity_hq/oauth-guzzle-middleware/downloads)](https://packagist.org/packages/serendipity_hq/oauth-guzzle-middleware)
+[![License](https://poser.pugx.org/serendipity_hq/oauth-guzzle-middleware/license)](https://packagist.org/packages/serendipity_hq/oauth-guzzle-middleware)
+[![Code Climate](https://codeclimate.com/github/SerendipityHQ/oauth-guzzle-middleware/badges/gpa.svg)](https://codeclimate.com/github/SerendipityHQ/oauth-guzzle-middleware)
+[![Test Coverage](https://codeclimate.com/github/SerendipityHQ/oauth-guzzle-middleware/badges/coverage.svg)](https://codeclimate.com/github/SerendipityHQ/oauth-guzzle-middleware/coverage)
+[![Issue Count](https://codeclimate.com/github/SerendipityHQ/oauth-guzzle-middleware/badges/issue_count.svg)](https://codeclimate.com/github/SerendipityHQ/oauth-guzzle-middleware)
+[![StyleCI](https://styleci.io/repos/51864555/shield)](https://styleci.io/repos/51864555)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/60961656-1bd1-40dd-9b37-2f9418e3bc1f/mini.png)](https://insight.sensiolabs.com/projects/60961656-1bd1-40dd-9b37-2f9418e3bc1f)
+[![Dependency Status](https://www.versioneye.com/user/projects/56c38a3b18b2710036c8dee1/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56c38a3b18b2710036c8dee1)
 
-[![Total Downloads](https://poser.pugx.org/serendipity_hq/guzzle-oauth1-middleware/downloads)](https://packagist.org/packages/serendipity_hq/guzzle-oauth1-middleware)
-[![License](https://poser.pugx.org/serendipity_hq/guzzle-oauth1-middleware/license)](https://packagist.org/packages/serendipity_hq/guzzle-oauth1-middleware)
-
-Guzzle 6+ OAuth Middleware
-==========================
+Guzzle 6+ OAuth 1.0a Middleware
+===============================
 
 Signs HTTP requests using OAuth 1.0. Requests are signed using a consumer key,
 consumer secret, OAuth token, and OAuth secret.
@@ -24,13 +30,13 @@ composer.json:
 
     {
         "require": {
-            "serendipity_hq/guzzle-oauth1-middleware": "~0.3"
+            "serendipity_hq/oauth-guzzle-middleware": "~0.1"
         }
     }
 
 
 
-Using the Subscriber
+Using the Middleware
 ====================
 
 Here's an example showing how to send an authenticated request to the Twitter
@@ -40,11 +46,11 @@ REST API:
 
     use GuzzleHttp\Client;
     use GuzzleHttp\HandlerStack;
-    use GuzzleHttp\Subscriber\Oauth\Oauth1;
+    use GuzzleHttp\Middleware\OpenAuthentication\Oauth10a;
 
     $stack = HandlerStack::create();
 
-    $middleware = new Oauth1([
+    $middleware = new Oauth10a([
         'consumer_key'    => 'my_key',
         'consumer_secret' => 'my_secret',
         'token'           => 'my_token',
@@ -67,11 +73,11 @@ the client by extending the array you feed to ``new Client`` with auth => oauth.
 
     use GuzzleHttp\Client;
     use GuzzleHttp\HandlerStack;
-    use GuzzleHttp\Subscriber\Oauth\Oauth1;
+    use GuzzleHttp\Middleware\OpenAuthentication\Oauth10a;
 
     $stack = HandlerStack::create();
 
-    $middleware = new Oauth1([
+    $middleware = new Oauth10a([
         'consumer_key'    => 'my_key',
         'consumer_secret' => 'my_secret',
         'token'           => 'my_token',
@@ -97,16 +103,16 @@ Using the RSA-SH1 signature method
 
 .. code-block:: php
 
-    use GuzzleHttp\Subscriber\Oauth\Oauth1;
+    use GuzzleHttp\Middleware\OpenAuthentication\Oauth10a;
 
     $stack = HandlerStack::create();
 
-    $middleware = new Oauth1([
+    $middleware = new Oauth10a([
         'consumer_key'    => 'my_key',
         'consumer_secret' => 'my_secret',
         'private_key_file' => 'my_path_to_private_key_file',
         'private_key_passphrase' => 'my_passphrase',
-        'signature_method' => Oauth1::SIGNATURE_METHOD_RSA,
+        'signature_method' => Oauth10a::SIGNATURE_METHOD_RSA,
     ]);
     $stack->push($middleware);
 

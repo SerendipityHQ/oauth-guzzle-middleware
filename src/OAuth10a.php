@@ -1,6 +1,6 @@
 <?php
 
-namespace GuzzleHttp\Middleware;
+namespace GuzzleHttp\Middleware\OpenAuthentication;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -20,7 +20,7 @@ use Psr\Http\Message\StreamInterface;
  *
  * @link http://oauth.net/core/1.0/#rfc.section.9.1.1 OAuth specification
  */
-class Oauth1
+class OAuth10a
 {
     /**
      * Consumer request method constants. See http://oauth.net/core/1.0/#consumer_req_param
@@ -93,7 +93,7 @@ class Oauth1
 
     private function onBefore(RequestInterface $request)
     {
-        $oauthparams = $this->getOauthParams(
+        $oauthparams = $this->getOAuthParams(
             $this->generateNonce($request),
             $this->config
         );
@@ -125,7 +125,7 @@ class Oauth1
      * Calculate signature for request
      *
      * @param RequestInterface $request Request to generate a signature for
-     * @param array            $params  Oauth parameters.
+     * @param array            $params  OAuth parameters.
      *
      * @return string
      *
@@ -154,13 +154,13 @@ class Oauth1
 
         // Implements double-dispatch to sign requests
         switch ($this->config['signature_method']) {
-            case Oauth1::SIGNATURE_METHOD_HMAC:
+            case OAuth10a::SIGNATURE_METHOD_HMAC:
                 $signature = $this->signUsingHmacSha1($baseString);
                 break;
-            case Oauth1::SIGNATURE_METHOD_RSA:
+            case OAuth10a::SIGNATURE_METHOD_RSA:
                 $signature = $this->signUsingRsaSha1($baseString);
                 break;
-            case Oauth1::SIGNATURE_METHOD_PLAINTEXT:
+            case OAuth10a::SIGNATURE_METHOD_PLAINTEXT:
                 $signature = $this->signUsingPlaintext($baseString);
                 break;
             default:
@@ -313,7 +313,7 @@ class Oauth1
      *
      * @return array
      */
-    private function getOauthParams($nonce, array $config)
+    private function getOAuthParams($nonce, array $config)
     {
         $params = [
             'oauth_consumer_key'     => $config['consumer_key'],
@@ -323,7 +323,7 @@ class Oauth1
         ];
 
         // Optional parameters should not be set if they have not been set in
-        // the config as the parameter may be considered invalid by the Oauth
+        // the config as the parameter may be considered invalid by the OAuth
         // service.
         $optionalParams = [
             'callback'  => 'oauth_callback',
