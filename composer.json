@@ -27,6 +27,9 @@
         "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
-        "psr-4": { "GuzzleHttp\\Middleware\\OpenAuthentication\\": "src" }
+        "psr-4": {
+            "GuzzleHttp\\Middleware\\OpenAuthentication\\": "src",
+            "GuzzleHttp\\Middleware\\OpenAuthentication\\Tests\\": "tests"
+        }
     }
 }

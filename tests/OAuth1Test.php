@@ -6,18 +6,18 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Middleware\OpenAuthentication\OAuth10a;
+use GuzzleHttp\Middleware\OpenAuthentication\OAuth1;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Middleware\OpenAuthentication;
 
 /**
- * Class OAuth10aTest.
+ * Class OAuth1Test.
  *
  *
  *
  * @package GuzzleHttp\Middleware\OpenAuthentication
  */
-class OAuth10aTest extends \PHPUnit_Framework_TestCase
+class OAuth1Test extends \PHPUnit_Framework_TestCase
 {
     const TIMESTAMP = '1327274290';
     const NONCE = 'e7aa11195ca58349bec8b5ebe351d3497eb9e603';
@@ -31,7 +31,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
 
     public function testAcceptsConfigurationData()
     {
-        $p = new OAuth10a($this->config);
+        $p = new OAuth1($this->config);
 
         // Access the config object
         $class = new \ReflectionClass($p);
@@ -52,7 +52,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
     {
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($this->config);
+        $middleware = new OAuth1($this->config);
         $stack->push($middleware);
 
         $container = [];
@@ -82,11 +82,11 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
     public function testSignsPlainText()
     {
         $config = $this->config;
-        $config['signature_method'] = OAuth10a::SIGNATURE_METHOD_PLAINTEXT;
+        $config['signature_method'] = OAuth1::SIGNATURE_METHOD_PLAINTEXT;
 
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $container = [];
@@ -111,7 +111,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
     {
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($this->config);
+        $middleware = new OAuth1($this->config);
         $stack->push($middleware);
 
         $container = [];
@@ -142,11 +142,11 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
     public function testSignsOAuthQueryStringRequest()
     {
         $config = $this->config;
-        $config['request_method'] = OAuth10a::REQUEST_METHOD_QUERY;
+        $config['request_method'] = OAuth1::REQUEST_METHOD_QUERY;
 
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $container = [];
@@ -180,7 +180,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
     {
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($this->config);
+        $middleware = new OAuth1($this->config);
         $stack->push($middleware);
 
         $container = [];
@@ -210,7 +210,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
         $config = $this->config;
         $config['request_method'] = 'Foo';
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $client = new Client([
@@ -230,7 +230,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
         $config = $this->config;
         $config['signature_method'] = 'Foo';
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $client = new Client([
@@ -247,7 +247,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
 
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $container = [];
@@ -274,7 +274,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
 
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $container = [];
@@ -301,7 +301,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
 
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $container = [];
@@ -336,7 +336,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
 
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $container = [];
@@ -373,7 +373,7 @@ class OAuth10aTest extends \PHPUnit_Framework_TestCase
 
         $stack = HandlerStack::create();
 
-        $middleware = new OAuth10a($config);
+        $middleware = new OAuth1($config);
         $stack->push($middleware);
 
         $container = [];
