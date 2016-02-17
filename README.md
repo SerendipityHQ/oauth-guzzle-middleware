@@ -63,7 +63,7 @@ From [OAuth Core 1.0a](http://oauth.net/core/1.0a/):
 ## This library supports
 
 - OAuth Core 1.0a
-- OAuth Protocol 1.0 (IS THE SAME IDENTICAL CLASS USED FOR OAuth Core 1.0a - Sorry :( ... for the moment :))
+- OAuth Protocol 1.0 (to implement)
 - OAuth Protocol 2.0 (to implement)
 
 # How to use the OAuth Core 1.0a Middleware
