@@ -74,6 +74,8 @@ You can send both 2-legged and 3-legged `Requests` by passing or not the `token`
 See the [Terminology paragraph on hueniverse.com](http://hueniverse.com/oauth/guide/terminology/) for more information
 about n-legged requests.
 
+For a full working example see the [Twitter example](docs/examples/Twitter/Twitter-GuzzleMiddleware_OAuth10a.php).
+
 ## Send a 3-legged `Request`
 
 ```php
@@ -153,7 +155,7 @@ try {
     $clientParams = [
         'base_uri'                      => 'https://api.twitter.com/1.1/',
         'handler'                       => $stack,
-        // Remove the options from the CLient parameters
+        // Remove the option from the CLient parameters
         // RequestOptions::AUTH            => 'oauth',
         RequestOptions::HTTP_ERRORS     => false,
         RequestOptions::DEBUG           => true,
