@@ -18,13 +18,14 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "aerendir/php-oauth-common": "*",
+        "aerendir/php-open-authentication": "*",
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
+        "codeclimate/php-test-reporter": "dev-master",
         "fabpot/php-cs-fixer": "*",
         "phpunit/phpunit": "*",
-        "codeclimate/php-test-reporter": "dev-master"
+        "symfony/var-dumper": "*"
     },
     "autoload": {
         "psr-4": {
