@@ -3,10 +3,7 @@
 namespace GuzzleHttp\Middleware\OpenAuthentication;
 
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Promise;
-use Psr\Http\Message\StreamInterface;
 
 /**
  * OAuth 1.0 signature plugin.
